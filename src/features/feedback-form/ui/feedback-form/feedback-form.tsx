@@ -1,8 +1,9 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import { feedbackSchema } from '../../model/schema';
-import { textFieldStyles } from '@/shared/ui/styled-text-field';
+import { StyledInput } from '@/shared/ui/styled-input';
+import { StyledButton } from '@/shared/ui/styled-button';
 import type { FeedbackFormData } from '../../model/types';
 import styles from './feedback-form.module.css';
 
@@ -34,27 +35,24 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
           name="fullName"
           control={control}
           render={({ field }) => (
-            <TextField
+            <StyledInput
               {...field}
               label="ФИО*"
               error={!!errors.fullName}
               helperText={errors.fullName?.message}
-              sx={textFieldStyles}
               fullWidth
             />
           )}
         />
-
         <Controller
           name="company"
           control={control}
           render={({ field }) => (
-            <TextField
+            <StyledInput
               {...field}
               label="Компания*"
               error={!!errors.company}
               helperText={errors.company?.message}
-              sx={textFieldStyles}
               fullWidth
             />
           )}
@@ -66,27 +64,24 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
           name="email"
           control={control}
           render={({ field }) => (
-            <TextField
+            <StyledInput
               {...field}
-              label="E-mail*"
+              label="Email*"
               error={!!errors.email}
               helperText={errors.email?.message}
-              sx={textFieldStyles}
               fullWidth
             />
           )}
         />
-
         <Controller
           name="phone"
           control={control}
           render={({ field }) => (
-            <TextField
+            <StyledInput
               {...field}
               label="Телефон*"
               error={!!errors.phone}
               helperText={errors.phone?.message}
-              sx={textFieldStyles}
               fullWidth
             />
           )}
@@ -97,14 +92,13 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
         name="comment"
         control={control}
         render={({ field }) => (
-          <TextField
+          <StyledInput
             {...field}
             multiline
             rows={4}
             label="Оставьте ваш комментарий"
             error={!!errors.comment}
             helperText={errors.comment?.message}
-            sx={textFieldStyles}
             fullWidth
           />
         )}
@@ -142,24 +136,7 @@ export const FeedbackForm = ({ onSubmit }: FeedbackFormProps) => {
           )}
         </div>
 
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{
-            backgroundColor: '#ff5252',
-            '&:hover': {
-              backgroundColor: '#ff1744',
-            },
-            textTransform: 'none',
-            fontWeight: 500,
-            fontSize: '16px',
-            height: '48px',
-            borderRadius: '8px',
-            padding: '14px 32px',
-          }}
-        >
-          Отправить
-        </Button>
+        <StyledButton type="submit">Отправить</StyledButton>
       </div>
     </form>
   );
