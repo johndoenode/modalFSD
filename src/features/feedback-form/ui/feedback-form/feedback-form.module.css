@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.agreement {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.checkbox {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+}
+
+.checkbox a {
+  color: #ff5252;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.error {
+  color: #ff1744;
+  font-size: 12px;
+  margin-top: 4px;
+}
