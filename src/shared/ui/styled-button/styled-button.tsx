@@ -1,4 +1,5 @@
 import { Button, ButtonProps, SxProps, Theme } from '@mui/material';
+import { forwardRef } from 'react';
 
 const buttonStyles: SxProps<Theme> = {
   backgroundColor: '#ff5252',
@@ -13,11 +14,15 @@ const buttonStyles: SxProps<Theme> = {
   padding: '14px 32px',
 };
 
-export const StyledButton = (props: ButtonProps) => {
-  const combinedSx: SxProps<Theme> = {
-    ...buttonStyles,
-    ...(props.sx as SxProps<Theme>),
-  };
+export const StyledButton = forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    const combinedSx: SxProps<Theme> = {
+      ...buttonStyles,
+      ...(props.sx as SxProps<Theme>),
+    };
 
-  return <Button variant="contained" {...props} sx={combinedSx} />;
-};
+    return <Button variant="contained" {...props} ref={ref} sx={combinedSx} />;
+  }
+);
+
+StyledButton.displayName = 'StyledButton';
